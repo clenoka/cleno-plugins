@@ -2,7 +2,7 @@ package net.unethicalite.plugins.clenoguardian;
 
 import net.runelite.client.config.*;
 
-@ConfigGroup("lucid-example")
+@ConfigGroup("clenoguardian")
 public interface ClenoGuardianConfig extends Config
 {
     @ConfigSection(

@@ -1,12 +1,12 @@
 [{
-  "projectUrl": "https://github.com/clenoka",
+  "projectUrl": "https://github.com/clenoka/cleno-plugins",
   "provider": "clenoka",
   "name": "Cleno Guardian",
   "description": "Summons Guardian",
   "id": "clenoguardian-plugin",
   "releases": [{
     "date": "2023-12-04",
-    "sha512sum": "93738792975801FBEDA90A641C69F4D3C8D71C193DE42A83CA1B8CC11AB0C098079E69235283BCB058363AE61D0668A3ADBE9CBADF1C27354C4A0ADED667293E",
+    "sha512sum": "CA40D870F08BA4876A01B6CA91172522A7F6391DCC1C3B09FB3838CA94871F49109CD2F9BC51FB1774BD19D377245D49E77668AB435BB3C6DD4E375B36434A00",
     "version": "0.0.1",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoguardian-0.0.1.jar?raw=true",
     "requires": "^1.0.0"
