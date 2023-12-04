@@ -13,17 +13,17 @@ plugins {
     kotlin("jvm") version "1.6.21"
 }
 
-project.extra["GithubUrl"] = "https://github.com/lucid-plugins/public-plugins"
-project.extra["GithubUserName"] = "lucid-plugins"
-project.extra["GithubRepoName"] = "public-plugins"
+project.extra["GithubUrl"] = "https://github.com/clenoka/cleno-plugins"
+project.extra["GithubUserName"] = "clenoka"
+project.extra["GithubRepoName"] = "cleno-plugins"
 
 apply<BootstrapPlugin>()
 
 allprojects {
     group = "net.unethicalite"
 
-    project.extra["PluginProvider"] = "lucid-soft"
-    project.extra["ProjectSupportUrl"] = "https://discord.gg/DDY8Tr2a"
+    project.extra["PluginProvider"] = "clenoka"
+    project.extra["ProjectSupportUrl"] = "https://github.com/clenoka"
     project.extra["PluginLicense"] = "3-Clause BSD License"
 
     apply<JavaPlugin>()

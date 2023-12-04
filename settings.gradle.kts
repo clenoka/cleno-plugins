@@ -23,16 +23,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "public-plugins"
+rootProject.name = "cleno-plugins"
 
-include("gauntlet-extended")
-include("lucid-gear-swapper")
-include("lucid-muspah")
-include("lucid-custom-prayers")
-include("lucid-example-plugin")
-include("lucid-spices")
-include("lucid-cannon-reloader")
-include("lucid-disable-rendering")
+include("clenoguardian")
+
 
 for (project in rootProject.children) {
     project.apply {
