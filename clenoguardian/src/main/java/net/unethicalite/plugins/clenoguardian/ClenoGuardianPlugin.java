@@ -53,15 +53,15 @@ public class ClenoGuardianPlugin extends Plugin
 
         if (client.getGameState() == GameState.LOGGED_IN)
         {
-            MessageUtils.addMessage(getName() + " Started");
+            MessageUtils.addMessage(getName() + "Started v0.1");
         }
     }
 
-    @Override
-    protected void shutDown()
-    {
-        log.info(getName() + " Stopped");
-    }
+ //   @Override
+ //   protected void shutDown()
+ //   {
+ //       log.info(getName() + " Stopped");
+ //   }
 
     @Subscribe
     public void onProjectileSpawned(ProjectileSpawned event)
