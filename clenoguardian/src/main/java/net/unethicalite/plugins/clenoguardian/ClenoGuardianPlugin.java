@@ -14,9 +14,6 @@ import net.unethicalite.api.utils.MessageUtils;
 import org.pf4j.Extension;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Logger;
 
 @Extension
@@ -39,8 +36,8 @@ public class ClenoGuardianPlugin extends Plugin
     private ClenoGuardianConfig config;
 
     private Logger log = Logger.getLogger(getName());
-    private static final Set<Integer> GUARDIAN_PROJECTILE_IDS = new HashSet<>(Arrays.asList(2616, 2614)); // Add all relevant IDs
-
+    private static final int GUARDIAN_RANGE_ID = 2616;
+    private static final int GUARDIAN_MAGE_ID = 2614;
 
 
     @Provides
@@ -71,7 +68,7 @@ public class ClenoGuardianPlugin extends Plugin
     {
         Projectile projectile = event.getProjectile();
 
-        if (GUARDIAN_PROJECTILE_IDS.contains(projectile.getId()))
+        if (projectile.getId() == GUARDIAN_MAGE_ID || projectile.getId() == GUARDIAN_RANGE_ID)
         {
             // When the guardian's projectile is detected, perform the summon and attack
             clientThread.invokeLater(() -> {
