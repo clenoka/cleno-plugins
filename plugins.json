@@ -1,11 +1,11 @@
 [{
-  "projectUrl": "https://github.com/clenoka/cleno-plugins",
+  "projectUrl": "https://github.com/clenoka",
   "provider": "clenoka",
   "name": "Cleno Guardian",
   "description": "Summons Guardian",
   "id": "clenoguardian-plugin",
   "releases": [{
-    "date": "2023-12-04",
+    "date": "2023-12-09",
     "sha512sum": "7EAD87166A5397F325F5260A99E4446AB3E6018FAF4D5338F3F14C17E72A7EF05C6CB553B7ABFBDE650439D40C6E63A6A1733C9B95EFD522DBD0DC2514DCE7D4",
     "version": "0.0.1",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoguardian-0.0.1.jar?raw=true",
@@ -17,20 +17,11 @@
   "name": "Cleno Item Noter",
   "description": "notes items",
   "id": "clenoitemnoter-plugin",
-  "releases": [
-    {
-      "date": "2023-12-09",
-      "sha512sum": "56AF2E4B12C18BE7E3AD270C1156FB1970B89C546D1DA08489BCD455BA89A09FD0227EA5AD500CDED758AE478871DEFF839F0BBBFFDA4A123F6CE1967D0D3E8C",
-      "version": "0.0.2",
-      "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.2.jar?raw=true",
-      "requires": "^1.0.0"
-    },
-    {
-      "date": "2023-12-09",
-      "sha512sum": "BE073E9E9F633D3A180E9ED561E3B9C474390677816ED03B1A77A3FB58E2D7F0B5352462820002FA6B6BF524D3B72F44C855CF6C8E13E9559A073A5A0F590E3B",
-      "version": "0.0.3",
-      "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
-      "requires": "^1.0.0"
-    }
-  ]
+  "releases": [{
+    "date": "2023-12-09",
+    "sha512sum": "BE073E9E9F633D3A180E9ED561E3B9C474390677816ED03B1A77A3FB58E2D7F0B5352462820002FA6B6BF524D3B72F44C855CF6C8E13E9559A073A5A0F590E3B",
+    "version": "0.0.3",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
 }]
