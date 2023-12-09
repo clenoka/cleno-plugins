@@ -13,15 +13,15 @@ public interface ClenoItemNoterConfig extends Config
     )
     String section1 = "Section 1";
     @ConfigItem(
-            name = "Items",
-            description = "Item names separated by commas",
+            name = "Item IDs",
+            description = "Item IDs to note, separated by commas",
             position = 1,
-            keyName = "noteItems",
+            keyName = "noteItemIds",
             section = section1
     )
-    default String noteItems()
+    default String noteItemIds()
     {
-        return "Runite bar";
+        return "12345"; // Default item ID; replace with a real one.
     }
 
 }

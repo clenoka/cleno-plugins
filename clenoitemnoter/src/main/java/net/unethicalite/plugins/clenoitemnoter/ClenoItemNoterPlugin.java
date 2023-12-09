@@ -70,14 +70,14 @@ public class ClenoItemNoterPlugin extends Plugin
             return; // Stop if the Banker's Note isn't in the inventory
         }
 
-        String[] itemsToNote = config.noteItems().split(",");
-        for (String itemName : itemsToNote)
+        // Split the config item IDs by commas and parse them to integers
+        String[] itemIdsToNote = config.noteItemIds().split(",");
+        for (String itemIdStr : itemIdsToNote)
         {
-            itemName = itemName.trim();
+            int itemId = Integer.parseInt(itemIdStr.trim());
 
-            // Reuse the 'item' variable for each inventory check
-            String finalItemName = itemName;
-            Item item = Inventory.getFirst(i -> i.getName().equalsIgnoreCase(finalItemName));
+            // Find the item in the inventory with the matching ID
+            Item item = Inventory.getFirst(itemId);
             if (item != null)
             {
                 item.useOn(bankersNote);
