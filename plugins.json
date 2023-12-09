@@ -19,9 +19,9 @@
   "id": "clenoitemnoter-plugin",
   "releases": [{
     "date": "2023-12-09",
-    "sha512sum": "1F0167F547BE9A499CB4F173F2C4836E6FB6FF8191ADCB1AA4D6A31CE25784CF11DA938CA8472DACEC73D415418EB3F1D454F6914786DB214FCAA754874864D0",
-    "version": "0.0.2",
-    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.2.jar?raw=true",
+    "sha512sum": "E9C082414DAB0F33E46014A124236191331BA06F80E24AB141D7C6BA624934F4EA2EFA10E212A2B7E8C3D3BE546705D644C44A766B2CE00BC08592FF58D22F29",
+    "version": "0.0.3",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
     "requires": "^1.0.0"
   }]
 }]
