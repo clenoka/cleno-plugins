@@ -17,20 +17,11 @@
   "name": "Cleno Item Noter",
   "description": "notes items",
   "id": "clenoitemnoter-plugin",
-  "releases": [
-    {
-      "date": "2023-12-09",
-      "sha512sum": "BE073E9E9F633D3A180E9ED561E3B9C474390677816ED03B1A77A3FB58E2D7F0B5352462820002FA6B6BF524D3B72F44C855CF6C8E13E9559A073A5A0F590E3B",
-      "version": "0.0.3",
-      "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
-      "requires": "^1.0.0"
-    },
-    {
-      "date": "2023-12-09",
-      "sha512sum": "56AF2E4B12C18BE7E3AD270C1156FB1970B89C546D1DA08489BCD455BA89A09FD0227EA5AD500CDED758AE478871DEFF839F0BBBFFDA4A123F6CE1967D0D3E8C",
-      "version": "0.0.2",
-      "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.2.jar?raw=true",
-      "requires": "^1.0.0"
-    }
-  ]
+  "releases": [{
+    "date": "2023-12-09",
+    "sha512sum": "1F0167F547BE9A499CB4F173F2C4836E6FB6FF8191ADCB1AA4D6A31CE25784CF11DA938CA8472DACEC73D415418EB3F1D454F6914786DB214FCAA754874864D0",
+    "version": "0.0.2",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.2.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
 }]
