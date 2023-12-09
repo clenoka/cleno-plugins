@@ -11,4 +11,17 @@
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoguardian-0.0.1.jar?raw=true",
     "requires": "^1.0.0"
   }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Item Noter",
+  "description": "notes items",
+  "id": "clenoitemnoter-plugin",
+  "releases": [{
+    "date": "2023-12-09",
+    "sha512sum": "F626C12CD540D857EF79054AD9FE5C7A0318957B0AEAF2ADD25422A51F2474B79809225C203A6C68DF8E4B1AEB1409E06333C37800D1AC827E57943C61AF3F86",
+    "version": "0.0.2",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.2.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
 }]

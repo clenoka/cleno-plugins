@@ -26,6 +26,7 @@
 rootProject.name = "cleno-plugins"
 
 include("clenoguardian")
+include("clenoitemnoter")
 
 
 for (project in rootProject.children) {
