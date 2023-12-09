@@ -1,6 +1,6 @@
 import ProjectVersions.unethicaliteVersion
 
-version = "0.0.3"
+version = "0.0.2"
 
 project.extra["PluginName"] = "Cleno Item Noter"
 project.extra["PluginDescription"] = "notes items"
