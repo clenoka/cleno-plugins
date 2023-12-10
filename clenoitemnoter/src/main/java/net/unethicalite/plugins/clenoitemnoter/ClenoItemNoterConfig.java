@@ -24,4 +24,15 @@ public interface ClenoItemNoterConfig extends Config
         return "12345"; // Default item ID; replace with a real one.
     }
 
+    @ConfigItem(
+            keyName = "noteAtX",
+            name = "Note At X",
+            description = "How many items should we have before noting?",
+            position = 2
+    )
+    default int noteAtX()
+    {
+        return 1; // Default to 5 or any other number you choose
+    }
+
 }

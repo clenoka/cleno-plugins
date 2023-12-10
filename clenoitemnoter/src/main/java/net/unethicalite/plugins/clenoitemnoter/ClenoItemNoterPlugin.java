@@ -70,18 +70,24 @@ public class ClenoItemNoterPlugin extends Plugin
             return; // Stop if the Banker's Note isn't in the inventory
         }
 
-        // Split the config item IDs by commas and parse them to integers
+        int noteAtX = config.noteAtX();
         String[] itemIdsToNote = config.noteItemIds().split(",");
         for (String itemIdStr : itemIdsToNote)
         {
             int itemId = Integer.parseInt(itemIdStr.trim());
 
-            // Find the item in the inventory with the matching ID
-            Item item = Inventory.getFirst(itemId);
-            if (item != null)
+            // Count the number of items in the inventory for this ID
+            int itemCount = Inventory.getCount(itemId);
+
+            // Check if the count is equal to or exceeds the configured minimum
+            if (itemCount >= noteAtX)
             {
-                item.useOn(bankersNote);
-                break; // Note one item per tick to avoid actions being too quick
+                Item item = Inventory.getFirst(itemId);
+                if (item != null)
+                {
+                    item.useOn(bankersNote);
+                    break; // Note one item per tick to avoid actions being too quick
+                }
             }
         }
     }
