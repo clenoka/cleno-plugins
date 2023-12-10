@@ -24,4 +24,17 @@
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
     "requires": "^1.0.0"
   }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Skill Unnoter",
+  "description": "unnotes items",
+  "id": "clenoskillunnoter-plugin",
+  "releases": [{
+    "date": "2023-12-10",
+    "sha512sum": "F38D6225478B43E0A3935DEE7390F5E43541384B862964B7F16DA519A5FCDEA6171B175064D3479C23013EEB50DD6EE65EA3EADECFAD8E6A2035AC48EE33BC7E",
+    "version": "0.0.1",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoskillunnoter-0.0.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
 }]
