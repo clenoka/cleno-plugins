@@ -19,7 +19,7 @@
   "id": "clenoitemnoter-plugin",
   "releases": [{
     "date": "2023-12-09",
-    "sha512sum": "90B1F6602A8E7A7281305C3C48B32FB00704598AB9759EBA64C3DE3C47D59D3A5B5A0F8D9BF7ECC4C09F5585507983FEAB4E3D97BDC718EF699E0D6105160A5A",
+    "sha512sum": "91C5168C51C8AD67CE3DC29E64986C1E3F86B2FC2718CFAD13539CEA69126F4942E6F4A4FF695ACF5050C36BC2549A19DE949C7FB21ADA7CC98E7C20912322E2",
     "version": "0.0.3",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
     "requires": "^1.0.0"
@@ -32,9 +32,35 @@
   "id": "clenoskillunnoter-plugin",
   "releases": [{
     "date": "2023-12-10",
-    "sha512sum": "0B452A52E5E1AC089666238755E282784F0B8D522E4026A5B1FB48E05D7BE7831E6358DDE7546230358831075AFCF5713DBB99E07C3780ACAB55F2B410BBB218",
+    "sha512sum": "F38D6225478B43E0A3935DEE7390F5E43541384B862964B7F16DA519A5FCDEA6171B175064D3479C23013EEB50DD6EE65EA3EADECFAD8E6A2035AC48EE33BC7E",
     "version": "0.0.1",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoskillunnoter-0.0.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Gem cutter",
+  "description": "An automatic gem cutter",
+  "id": "clenogemcutter-plugin",
+  "releases": [{
+    "date": "2023-12-11",
+    "sha512sum": "57B71FD8CEDDAC264C4C08FB9819FEAA19CA4BB0209171FD71032254CC647233EF2FC2B05A0C60C14450BE1D33C1D0E5A999F6F083F3270E23EB1E4A792468AE",
+    "version": "0.0.2",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/gemcutter-0.0.2.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Wine Maker",
+  "description": "An automatic wine maker",
+  "id": "clenowinemaker-plugin",
+  "releases": [{
+    "date": "2023-12-11",
+    "sha512sum": "03B75E814399BBCC0A220153499C0B3D28285BB7A5CDB8C7AB5372863F819528FBE71A24CB33C7854462F072A2E846BD16F0D1D1EF83DAC26AC8A3A1F483EC76",
+    "version": "0.0.2",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/winemaker-0.0.2.jar?raw=true",
     "requires": "^1.0.0"
   }]
 }]
