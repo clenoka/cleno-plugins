@@ -28,6 +28,7 @@ rootProject.name = "cleno-plugins"
 include("clenoguardian")
 include("clenoitemnoter")
 include("clenoskillunnoter")
+include("clenoboner")
 include("gemcutter")
 include("winemaker")
 

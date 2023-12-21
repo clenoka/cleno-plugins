@@ -1,6 +1,19 @@
 [{
   "projectUrl": "https://github.com/clenoka",
   "provider": "clenoka",
+  "name": "Cleno Boner",
+  "description": "Bones",
+  "id": "clenoboner-plugin",
+  "releases": [{
+    "date": "2023-12-20",
+    "sha512sum": "0683C70923E39B88B34ABCC21001092C6D36F9673865EC6931029A92525F47505563783B2F58C4C607540F8B5BB57626921AB3629D8965CAC6E6DDA9555F0BAE",
+    "version": "0.0.1",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoboner-0.0.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
   "name": "Cleno Guardian",
   "description": "Summons Guardian",
   "id": "clenoguardian-plugin",
