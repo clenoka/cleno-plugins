@@ -448,9 +448,9 @@ public class InfernoPlugin extends Plugin
 		// You need to determine the IDs for magic and ranged weapons
 		if (isMagicWeapon(weapon.getId()))
 		{
-				if (!Prayers.isEnabled(Prayer.MYSTIC_MIGHT))
+				if (!Prayers.isEnabled(Prayer.AUGURY))
 				{
-					Static.getClient().invokeMenuAction("Activate", "Augury", 1, 57, -1, 35455008);
+					Static.getClient().invokeMenuAction("Activate", "Augury", 1, 57, -1, 35455012);
 				}
 			}
 			else if (isRangedWeapon(weapon.getId()))
