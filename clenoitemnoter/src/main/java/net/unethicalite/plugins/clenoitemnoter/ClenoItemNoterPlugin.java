@@ -50,9 +50,9 @@ public class ClenoItemNoterPlugin extends Plugin
         log.info(getName() + " Started");
 
         if (client.getGameState() == GameState.LOGGED_IN)
-        {
+            {
             MessageUtils.addMessage(getName() + " Started");
-        }
+            }
     }
 
     @Override
@@ -66,14 +66,14 @@ public class ClenoItemNoterPlugin extends Plugin
     {
         Item bankersNote = Inventory.getFirst(BANKERS_NOTE_ID);
         if (bankersNote == null)
-        {
+            {
             return; // Stop if the Banker's Note isn't in the inventory
-        }
+            }
 
         int noteAtX = config.noteAtX();
         String[] itemIdsToNote = config.noteItemIds().split(",");
         for (String itemIdStr : itemIdsToNote)
-        {
+            {
             int itemId = Integer.parseInt(itemIdStr.trim());
 
             // Count the number of items in the inventory for this ID
@@ -81,14 +81,14 @@ public class ClenoItemNoterPlugin extends Plugin
 
             // Check if the count is equal to or exceeds the configured minimum
             if (itemCount >= noteAtX)
-            {
+                {
                 Item item = Inventory.getFirst(itemId);
                 if (item != null)
-                {
+                    {
                     item.useOn(bankersNote);
                     break; // Note one item per tick to avoid actions being too quick
+                    }
                 }
             }
-        }
     }
 }

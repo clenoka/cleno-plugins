@@ -12,6 +12,7 @@ public interface ClenoItemNoterConfig extends Config
             keyName = "section1"
     )
     String section1 = "Section 1";
+
     @ConfigItem(
             name = "Item IDs",
             description = "Item IDs to note, separated by commas",

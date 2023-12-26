@@ -1,14 +1,53 @@
 [{
   "projectUrl": "https://github.com/clenoka",
   "provider": "clenoka",
-  "name": "Cleno Boner",
-  "description": "Bones",
-  "id": "clenoboner-plugin",
+  "name": "Chaos Alchemical Hydra",
+  "description": "Copy of Alchemical Hydra plugin from xKyle's repo",
+  "id": "chaosalchemicalhydra-plugin",
   "releases": [{
-    "date": "2023-12-20",
-    "sha512sum": "0683C70923E39B88B34ABCC21001092C6D36F9673865EC6931029A92525F47505563783B2F58C4C607540F8B5BB57626921AB3629D8965CAC6E6DDA9555F0BAE",
+    "date": "2023-12-24",
+    "sha512sum": "B32705DD65058F27D62BFE7AD8E6CBEA80E7B48A6357E5E2B47664108E84FFBD7486E1E20B728CF913EDBC72067C1BEE4565486EB64CDA3357071CFE9FC37691",
+    "version": "5.1.1",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/alchemicalhydra-5.1.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Cerberus",
+  "description": "Copy of Cerberus plugin from xKyle's repo",
+  "id": "chaoscerberus-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "BCCACB0C76569A02DF832AFBAB11BC266CC41BE1A89FB54DD31F884DD4A32A9934CAD6D8B1A984444D7CDDD73E0B475D7679C9655EDA76E9855353E1BC23F68B",
+    "version": "5.0.3",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/cerberus-5.0.3.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Auto Eater",
+  "description": "Auto eats",
+  "id": "clenoautoeater-plugin",
+  "releases": [{
+    "date": "2023-12-22",
+    "sha512sum": "E7137A47073452D17505E596E6C7317A2F455547B14705BC5480BA3D5913D3F206910A2B37A2143BFE97FC27AA89B9451A260EE5489F70FEE4B41FCE9614789D",
     "version": "0.0.1",
-    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoboner-0.0.1.jar?raw=true",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoautoeater-0.0.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Fisher",
+  "description": "3t fisher for infernal eels",
+  "id": "clenofisher-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "970BFADB61F5C0BCF1CB0B69969514F9E11BCEC23B209DB736F13993FFCAFC1F771D035E74DE73BAFFEDF2D1727D50ED6E86D06B748B31BA4360996537051C8D",
+    "version": "0.0.1",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenofisher-0.0.1.jar?raw=true",
     "requires": "^1.0.0"
   }]
 }, {
@@ -18,8 +57,8 @@
   "description": "Summons Guardian",
   "id": "clenoguardian-plugin",
   "releases": [{
-    "date": "2023-12-09",
-    "sha512sum": "7EAD87166A5397F325F5260A99E4446AB3E6018FAF4D5338F3F14C17E72A7EF05C6CB553B7ABFBDE650439D40C6E63A6A1733C9B95EFD522DBD0DC2514DCE7D4",
+    "date": "2023-12-22",
+    "sha512sum": "0EFAB31D56EB8731FA514F43D439E42D0D8F935DFC9BA40783DAADA10CAABE1A00BD616D0CC5C11FBFF5BA5FA203E2E8834F1BB3DE4C556AA3DE4869FEB97798",
     "version": "0.0.1",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoguardian-0.0.1.jar?raw=true",
     "requires": "^1.0.0"
@@ -31,8 +70,8 @@
   "description": "notes items",
   "id": "clenoitemnoter-plugin",
   "releases": [{
-    "date": "2023-12-09",
-    "sha512sum": "91C5168C51C8AD67CE3DC29E64986C1E3F86B2FC2718CFAD13539CEA69126F4942E6F4A4FF695ACF5050C36BC2549A19DE949C7FB21ADA7CC98E7C20912322E2",
+    "date": "2023-12-22",
+    "sha512sum": "C8F7711055FC8F42581F2170AF7FD0EFDFD41E32C74B802F1B5FA17502D15A7F9283F15BC0F8CAF36A666C14318C199E5C3758E596DCEC68E54A6D7242CAF647",
     "version": "0.0.3",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoitemnoter-0.0.3.jar?raw=true",
     "requires": "^1.0.0"
@@ -44,10 +83,49 @@
   "description": "unnotes items",
   "id": "clenoskillunnoter-plugin",
   "releases": [{
-    "date": "2023-12-10",
-    "sha512sum": "F38D6225478B43E0A3935DEE7390F5E43541384B862964B7F16DA519A5FCDEA6171B175064D3479C23013EEB50DD6EE65EA3EADECFAD8E6A2035AC48EE33BC7E",
+    "date": "2023-12-22",
+    "sha512sum": "CA8D0A632BCD2AC537149EFE5D80BC1B86B7E91F4EEF1232A844C2879F281BCA8D0263378A3936F68BE2067624B5110923807E57FCB6828B074E3F1326FE78A5",
     "version": "0.0.1",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/clenoskillunnoter-0.0.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Combat Helper",
+  "description": "Various utilities to make combat easier",
+  "id": "chaoscombathelper-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "D4CB1B46373CA905F59AA8121488FE85091762DA309B96228C5C3E106F4210977BD169D7E27C6F65303D0A4DB1B15B6E63505BF338EFE951D7D793E5CDF23295",
+    "version": "1.10.1",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/combathelper-1.10.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Demonic Gorillas",
+  "description": "Copy of Demonic Gorilla plugin from xKyle's repo",
+  "id": "chaosdemonicgorillas-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "FB6D1C05268649A0B3A10874B9754470C12992E179102B28B41958AF433D6F659C0DD7860CCB6A9668E17E609E53C45E4B404D615E77905791D3978F9C071BF6",
+    "version": "5.0.2",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/demonicgorillas-5.0.2.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Gauntlet Extended",
+  "description": "Copy of Gauntlet Extended from xKyle's repo",
+  "id": "chaosgauntletextended-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "E6BB82770BE54B9DF06A6D25968E23911B9B54A156C6EF13893EFE5E2BE6F70319E883C1BA0785B31750A0A06D515D059F3CC3BB954F98D81F8A5A3BFFC52B6D",
+    "version": "6.0.0",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/gauntletextended-6.0.0.jar?raw=true",
     "requires": "^1.0.0"
   }]
 }, {
@@ -57,10 +135,62 @@
   "description": "An automatic gem cutter",
   "id": "clenogemcutter-plugin",
   "releases": [{
-    "date": "2023-12-11",
-    "sha512sum": "57B71FD8CEDDAC264C4C08FB9819FEAA19CA4BB0209171FD71032254CC647233EF2FC2B05A0C60C14450BE1D33C1D0E5A999F6F083F3270E23EB1E4A792468AE",
+    "date": "2023-12-22",
+    "sha512sum": "B1B57F9C51C6CE8B8BD79BF4A921BBFDB75712C253355400B641B55FFCAE47EC0066629C856B895505F2C87479608A30F3EDE0D7D6714CBF59159E502A06916E",
     "version": "0.0.2",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/gemcutter-0.0.2.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Grotesque Guardians",
+  "description": "Copy of Grotesque Guardians plugin from xKyle's repo",
+  "id": "chaosgrotesqueguardians-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "3E242F74D6E4D50CE64EF0C93344C60866622C33C2E77C482E3A1E9F7080B6FC0903B4C3C60042E7FB5711C03B436DD2428159B8AE7E921C71CE373B1C067571",
+    "version": "5.0.5",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/grotesqueguardians-5.0.5.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Inferno",
+  "description": "Inferno helper",
+  "id": "clenoinferno-plugin",
+  "releases": [{
+    "date": "2023-12-26",
+    "sha512sum": "C36E974E3085BF7389EFFB5F59635C6A99059D90B47FA7589E9306D6E6F5896CEC079F451B548EC43137ADFC17E0E47272EC63C97D2B394D2DC6C70A834CC643",
+    "version": "6.0.0",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/inferno-6.0.0.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Cleno Nex Extended",
+  "description": "Helper for fighting Nex",
+  "id": "clenonexextended-plugin",
+  "releases": [{
+    "date": "2023-12-22",
+    "sha512sum": "2F98C154702BC6E06CB61D4F52AE85BBD3702AD6F1B8628A2F9D0BC0A4BEC41E3B91902EB968AA2952DEC125B7C9D2367B0532F3B094A395AB71DFBE1A9408F9",
+    "version": "6.0.0",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/nex-6.0.0.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Utils",
+  "description": "Utilities for Chaos scripts",
+  "id": "chaosutils-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "FB3E8E7B21554E313D9C776703E6C234A93905B1BC1EBB9C1D68EEBEF3E96ECF02C82127E8B12046FFF4E4EC4776C45BE355398A3B5B5F956796B710602A70BF",
+    "version": "1.9.3",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/utils-1.9.3.jar?raw=true",
     "requires": "^1.0.0"
   }]
 }, {
@@ -70,10 +200,23 @@
   "description": "An automatic wine maker",
   "id": "clenowinemaker-plugin",
   "releases": [{
-    "date": "2023-12-11",
-    "sha512sum": "03B75E814399BBCC0A220153499C0B3D28285BB7A5CDB8C7AB5372863F819528FBE71A24CB33C7854462F072A2E846BD16F0D1D1EF83DAC26AC8A3A1F483EC76",
+    "date": "2023-12-22",
+    "sha512sum": "1787D8E5F1086B3BCBFF6ADA522332040A48E2F2C68A347467DFF6F3E6AFD864E12D560796DBCF7529CE6053A61007FC835C6A418999BEA9ECC7A6D5163EC6D5",
     "version": "0.0.2",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/winemaker-0.0.2.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
+  "name": "Chaos Zulrah",
+  "description": "Copy of Zulrah plugin from xKyle's repo",
+  "id": "chaoszulrah-plugin",
+  "releases": [{
+    "date": "2023-12-24",
+    "sha512sum": "ADF706F471874B3EE6FCA01C280E946E4449651BD21624F1833D839059E5664504A4BE9DE72DC3CB8F27FDAB554C5C672457632F2542F66300AFAA37CE2B65DC",
+    "version": "5.0.8",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/zulrah-5.0.8.jar?raw=true",
     "requires": "^1.0.0"
   }]
 }]

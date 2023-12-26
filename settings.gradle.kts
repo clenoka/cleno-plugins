@@ -28,9 +28,20 @@ rootProject.name = "cleno-plugins"
 include("clenoguardian")
 include("clenoitemnoter")
 include("clenoskillunnoter")
-include("clenoboner")
+include("clenoautoeater")
 include("gemcutter")
 include("winemaker")
+include("nex")
+include("utils")
+include("combathelper")
+include("alchemicalhydra")
+include("cerberus")
+include("demonicgorillas")
+include("gauntletextended")
+include("grotesqueguardians")
+include("zulrah")
+include("clenofisher")
+include("inferno")
 
 
 for (project in rootProject.children) {

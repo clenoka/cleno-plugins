@@ -1,7 +1,15 @@
 package net.unethicalite.plugins.clenoguardian;
 
 import com.google.inject.Provides;
-import net.runelite.api.*;
+import java.util.logging.Logger;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import net.runelite.api.Actor;
+import net.runelite.api.Client;
+import net.runelite.api.GameState;
+import net.runelite.api.Item;
+import net.runelite.api.NPC;
+import net.runelite.api.Projectile;
 import net.runelite.api.events.ProjectileSpawned;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -12,9 +20,6 @@ import net.unethicalite.api.entities.NPCs;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.utils.MessageUtils;
 import org.pf4j.Extension;
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import java.util.logging.Logger;
 
 @Extension
 @PluginDescriptor(
@@ -52,16 +57,16 @@ public class ClenoGuardianPlugin extends Plugin
         log.info(getName() + " Started");
 
         if (client.getGameState() == GameState.LOGGED_IN)
-        {
+            {
             MessageUtils.addMessage(getName() + "Started v0.1");
-        }
+            }
     }
 
- //   @Override
- //   protected void shutDown()
- //   {
- //       log.info(getName() + " Stopped");
- //   }
+    //   @Override
+    //   protected void shutDown()
+    //   {
+    //       log.info(getName() + " Stopped");
+    //   }
 
     @Subscribe
     public void onProjectileSpawned(ProjectileSpawned event)
@@ -69,33 +74,36 @@ public class ClenoGuardianPlugin extends Plugin
         Projectile projectile = event.getProjectile();
 
         if (projectile.getId() == GUARDIAN_MAGE_ID || projectile.getId() == GUARDIAN_RANGE_ID)
-        {
+            {
             // When the guardian's projectile is detected, perform the summon and attack
-            clientThread.invokeLater(() -> {
-                selectSummonOption();
-                attackClosestInteractingNpc();
+            clientThread.invokeLater(() ->
+            {
+            selectSummonOption();
+            attackClosestInteractingNpc();
             });
-        }
+            }
     }
 
     private int lastSummonTick = -1;
+
     private void selectSummonOption()
 
     {
         int currentTick = client.getTickCount();
         Item horn = Inventory.getFirst("Guardian horn");
         if (horn != null && (lastSummonTick == -1 || currentTick > lastSummonTick))
-        {
+            {
             horn.interact("Summon");
             lastSummonTick = currentTick;
-        }
+            }
     }
+
     private void attackClosestInteractingNpc()
     {
         NPC npcToAttack = NPCs.getNearest(Actor::isInteracting);
         if (npcToAttack != null && npcToAttack.getHealthRatio() > 0)
-        {
+            {
             npcToAttack.interact("Attack");
-        }
+            }
     }
 }

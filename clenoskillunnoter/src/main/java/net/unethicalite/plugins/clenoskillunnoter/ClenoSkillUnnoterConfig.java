@@ -12,6 +12,7 @@ public interface ClenoSkillUnnoterConfig extends Config
             keyName = "section1"
     )
     String section1 = "Section 1";
+
     @ConfigItem(
             keyName = "notedItemId",
             name = "Noted Item ID",

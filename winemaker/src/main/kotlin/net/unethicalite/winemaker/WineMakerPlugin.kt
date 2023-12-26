@@ -81,15 +81,18 @@ class WineMakerPlugin : LoopedPlugin() {
             if (config.debugger()) MessageUtils.addMessage("Current state: ${getState()}")
             var local: Player = Players.getLocal()
 
-            if(chinBreakHandler.shouldBreak(this@WineMakerPlugin)){
+            if (chinBreakHandler.shouldBreak(this@WineMakerPlugin)) {
                 MessageUtils.addMessage("Attempting to break")
                 chinBreakHandler.startBreak(this@WineMakerPlugin)
             }
 
-            if(Inventory.contains(ItemID.JUG_OF_BAD_WINE) || Inventory.contains(ItemID.JUG_OF_WINE) || Inventory.contains("Zamorak's unfermented wine")){
-                if(Bank.isOpen()){
+            if (Inventory.contains(ItemID.JUG_OF_BAD_WINE) || Inventory.contains(ItemID.JUG_OF_WINE) || Inventory.contains(
+                    "Zamorak's unfermented wine"
+                )
+            ) {
+                if (Bank.isOpen()) {
                     Bank.depositInventory()
-                }else{
+                } else {
                     var banker: NPC? = NPCs.getNearest { it.hasAction("Bank") }
                     if (banker != null) {
                         banker.interact("Bank")
@@ -99,37 +102,33 @@ class WineMakerPlugin : LoopedPlugin() {
                 }
             }
 
-            if(!Inventory.contains("Zamorak's grapes")){
-                if(!Bank.isOpen()){
+            if (!Inventory.contains("Zamorak's grapes")) {
+                if (!Bank.isOpen()) {
                     var banker: NPC? = NPCs.getNearest { it.hasAction("Bank") }
                     if (banker != null) {
                         banker.interact("Bank")
                         Time.sleepUntil({ Bank.isOpen() }, 1500)
                     }
-                }else{
+                } else {
                     if (Bank.contains(ItemID.ZAMORAKS_GRAPES)) {
                         Bank.withdraw(ItemID.ZAMORAKS_GRAPES, 14, Bank.WithdrawMode.ITEM)
-                    }
-                    else
-                    {
+                    } else {
                         startPlugin = false
                         return -1
                     }
                 }
             }
-            if(!Inventory.contains("Jug of water")){
-                if(!Bank.isOpen()){
+            if (!Inventory.contains("Jug of water")) {
+                if (!Bank.isOpen()) {
                     var banker: NPC? = NPCs.getNearest { it.hasAction("Bank") }
                     if (banker != null) {
                         banker.interact("Bank")
                         Time.sleepUntil({ Bank.isOpen() }, 1500)
                     }
-                }else{
+                } else {
                     if (Bank.contains(ItemID.JUG_OF_WATER)) {
                         Bank.withdraw(ItemID.JUG_OF_WATER, 14, Bank.WithdrawMode.ITEM)
-                    }
-                    else
-                    {
+                    } else {
                         startPlugin = false
                         return -1
                     }
@@ -138,7 +137,7 @@ class WineMakerPlugin : LoopedPlugin() {
                 Time.sleepTick()
             }
 
-            if(!Inventory.contains("Zamorak's grapes") || !Inventory.contains("Jug of water")) return 1
+            if (!Inventory.contains("Zamorak's grapes") || !Inventory.contains("Jug of water")) return 1
             if (!local.isAnimating) {
                 if (Production.isOpen()) {
                     Production.chooseOption(1)
@@ -165,18 +164,23 @@ class WineMakerPlugin : LoopedPlugin() {
     }
 
     @Subscribe
-    private fun onChatMessage(chatMessage: ChatMessage){
+    private fun onChatMessage(chatMessage: ChatMessage) {
         val message: String = chatMessage.message
-        if(message.isEmpty() || chatMessage.type != ChatMessageType.GAMEMESSAGE) return
+        if (message.isEmpty() || chatMessage.type != ChatMessageType.GAMEMESSAGE) return
 
     }
+
     @Subscribe
     private fun onConfigButtonPressed(configButtonClicked: ConfigButtonClicked) {
-        if (!configButtonClicked.group.equals("WineMakerConfig", ignoreCase = true) || Static.getClient().gameState != GameState.LOGGED_IN || Players.getLocal() == null) return
+        if (!configButtonClicked.group.equals(
+                "WineMakerConfig",
+                ignoreCase = true
+            ) || Static.getClient().gameState != GameState.LOGGED_IN || Players.getLocal() == null
+        ) return
         if (configButtonClicked.key.equals("startHelper", ignoreCase = true)) {
             startPlugin = !startPlugin
             MessageUtils.addMessage("Plugin running: $startPlugin")
-            if(startPlugin)
+            if (startPlugin)
                 chinBreakHandler.startPlugin(this)
             else
                 chinBreakHandler.stopPlugin(this)

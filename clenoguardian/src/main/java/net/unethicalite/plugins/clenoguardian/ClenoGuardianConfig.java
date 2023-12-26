@@ -12,6 +12,7 @@ public interface ClenoGuardianConfig extends Config
             keyName = "section1"
     )
     String section1 = "Section 1";
+
     @ConfigItem(
             name = "Toggle 1",
             description = "A boolean toggle",

@@ -76,79 +76,69 @@ class GemCutterPlugin : LoopedPlugin() {
         with(functions) {
             MessageUtils.addMessage(getState().name)
 
-            when(getState()){
+            when (getState()) {
                 States.HANDLE_BREAK -> {
                     MessageUtils.addMessage("Attempting to break")
                     chinBreakHandler.startBreak(this@GemCutterPlugin)
                 }
+
                 States.HANDLE_BANK -> {
-                    if (Bank.isOpen())
-                    {
-                        if (!Bank.contains { it.id == config.productType().itemID })
-                        {
+                    if (Bank.isOpen()) {
+                        if (!Bank.contains { it.id == config.productType().itemID }) {
                             startPlugin = false
                             return -1
                         }
-                        if (Inventory.contains{it.id != ItemID.CHISEL && it.id != config.productType().itemID})
-                        {
-                            Bank.depositAllExcept { it.id == ItemID.CHISEL || it.id == config.productType().itemID  }
+                        if (Inventory.contains { it.id != ItemID.CHISEL && it.id != config.productType().itemID }) {
+                            Bank.depositAllExcept { it.id == ItemID.CHISEL || it.id == config.productType().itemID }
                             return sleepDelay().toInt()
                         }
-                        if (!Inventory.contains(ItemID.CHISEL))
-                        {
-                            if (Bank.contains(ItemID.CHISEL))
-                            {
+                        if (!Inventory.contains(ItemID.CHISEL)) {
+                            if (Bank.contains(ItemID.CHISEL)) {
                                 Bank.withdraw(ItemID.CHISEL, 1, Bank.WithdrawMode.ITEM)
-                            }
-                            else
-                            {
+                            } else {
                                 startPlugin = false
                                 return -1
                             }
                             return sleepDelay().toInt()
                         }
-                        if (!Inventory.contains(config.productType().itemID))
-                        {
-                            if (Bank.contains(config.productType().itemID))
-                            {
+                        if (!Inventory.contains(config.productType().itemID)) {
+                            if (Bank.contains(config.productType().itemID)) {
                                 Bank.withdraw(config.productType().itemID, 27, Bank.WithdrawMode.ITEM)
                                 Bank.close()
-                                Time.sleepUntil({Inventory.contains(config.productType().itemID)}, 1500)
-                            }
-                            else
-                            {
+                                Time.sleepUntil({ Inventory.contains(config.productType().itemID) }, 1500)
+                            } else {
                                 startPlugin = false
                                 return -1
                             }
                             return sleepDelay().toInt()
                         }
-                    }
-                    else
-                    {
-                        var banker: NPC? = NPCs.getNearest{it.hasAction("Bank")}
+                    } else {
+                        var banker: NPC? = NPCs.getNearest { it.hasAction("Bank") }
                         banker?.interact("Bank")
-                        Time.sleepUntil({Bank.isOpen()}, 2500)
+                        Time.sleepUntil({ Bank.isOpen() }, 2500)
                     }
                 }
+
                 States.CUT_GEM -> {
-                    if (Production.isOpen())
-                    {
+                    if (Production.isOpen()) {
                         Production.chooseOption(1)
                         Time.sleep(5000)
-                        Time.sleepUntil({!Inventory.contains(config.productType().itemID) || (Dialog.isOpen())}, {Players.getLocal().animation != -1}, 5000)
-                    }
-                    else
-                    {
+                        Time.sleepUntil(
+                            { !Inventory.contains(config.productType().itemID) || (Dialog.isOpen()) },
+                            { Players.getLocal().animation != -1 },
+                            5000
+                        )
+                    } else {
                         var gem: Item? = Inventory.getFirst(config.productType().itemID)
                         var chisel: Item? = Inventory.getFirst(ItemID.CHISEL)
 
-                        if (gem != null && chisel != null)
-                        {
+                        if (gem != null && chisel != null) {
                             gem.useOn(chisel)
-                            Time.sleepUntil({Production.isOpen()}, 2500)
+                            Time.sleepUntil({ Production.isOpen() }, 2500)
                         }
                     }
                 }
+
                 States.UNKNOWN -> {
                     MessageUtils.addMessage("Reached unknown")
                 }
@@ -165,11 +155,15 @@ class GemCutterPlugin : LoopedPlugin() {
 
     @Subscribe
     private fun onConfigButtonPressed(configButtonClicked: ConfigButtonClicked) {
-        if (!configButtonClicked.group.equals("GemCutterConfig", ignoreCase = true) || Static.getClient().gameState != GameState.LOGGED_IN || Players.getLocal() == null) return
+        if (!configButtonClicked.group.equals(
+                "GemCutterConfig",
+                ignoreCase = true
+            ) || Static.getClient().gameState != GameState.LOGGED_IN || Players.getLocal() == null
+        ) return
         if (configButtonClicked.key.equals("startHelper", ignoreCase = true)) {
             startPlugin = !startPlugin
             MessageUtils.addMessage("Plugin running: $startPlugin")
-            if(startPlugin)
+            if (startPlugin)
                 chinBreakHandler.startPlugin(this)
             else
                 chinBreakHandler.stopPlugin(this)

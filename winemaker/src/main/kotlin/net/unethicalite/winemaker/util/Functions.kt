@@ -28,7 +28,12 @@ class Functions {
         return States.UNKNOWN
     }
 
-    fun WineMakerPlugin.sleepUntil(supplier: BooleanSupplier, resetSupplier: BooleanSupplier, pollingRate: Int, timeOut: Int): Boolean {
+    fun WineMakerPlugin.sleepUntil(
+        supplier: BooleanSupplier,
+        resetSupplier: BooleanSupplier,
+        pollingRate: Int,
+        timeOut: Int
+    ): Boolean {
         if (Static.getClient().isClientThread) {
             return false
         }
