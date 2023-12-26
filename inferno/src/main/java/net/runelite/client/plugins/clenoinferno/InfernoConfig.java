@@ -226,6 +226,17 @@ public interface InfernoConfig extends Config
 	{
 		return true;
 	}
+	@ConfigItem(
+			position = 5,
+			keyName = "autoOffensivePrayer",
+			name = "Automatically activate offensive prayers",
+			description = "Does it's best to activate and deactivate offensive prayers",
+			section = PrayerSection
+	)
+	default boolean autoOffensivePrayer()
+	{
+		return true;
+	}
 
 	@ConfigItem(
 		position = 4,

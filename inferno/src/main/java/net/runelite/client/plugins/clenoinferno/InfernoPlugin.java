@@ -300,6 +300,11 @@ public class InfernoPlugin extends Plugin
 		{
 			activatePrayer(closestAttack);
 		}
+		if (closestAttack == null)
+			{
+			if (config.autoPrayer())
+				deactivatePrayers();
+			}
 
 		//if finalPhaseTick, we will skip incrementing because we already did it in onNpcSpawned
 		if (finalPhaseTick)
@@ -389,7 +394,11 @@ public class InfernoPlugin extends Plugin
 	}
 	private void activatePrayer(InfernoNPC.Attack attackType)
 	{
-
+		if (attackType == null)
+		{
+			deactivatePrayers();
+			return;
+		}
 
 			//MessageUtils.addMessage("Closest Attack: " + attackType);
 
@@ -446,19 +455,19 @@ public class InfernoPlugin extends Plugin
 		}
 
 		// You need to determine the IDs for magic and ranged weapons
-		if (isMagicWeapon(weapon.getId()))
+		if (isMagicWeapon(weapon.getId()) && config.autoOffensivePrayer())
 		{
 				if (!Prayers.isEnabled(Prayer.AUGURY))
 				{
 					Static.getClient().invokeMenuAction("Activate", "Augury", 1, 57, -1, 35455012);
 				}
 			}
-			else if (isRangedWeapon(weapon.getId()))
+			else if (isRangedWeapon(weapon.getId()) && config.autoOffensivePrayer())
 			{
-		if (!Prayers.isEnabled(Prayer.RIGOUR))
-			{
-				Static.getClient().invokeMenuAction("Activate", "Rigour", 1, 57, -1, 35455009);
-			}
+				if (!Prayers.isEnabled(Prayer.RIGOUR))
+					{
+						Static.getClient().invokeMenuAction("Activate", "Rigour", 1, 57, -1, 35455009);
+					}
 		}
 	}
 
@@ -479,6 +488,30 @@ public class InfernoPlugin extends Plugin
 		));
 
 		return rangedWeaponIDs.contains(itemId);
+	}
+	private void deactivatePrayers()
+	{
+
+		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MAGIC))
+			{
+			Static.getClient().invokeMenuAction("Deactivate", "Protect from Magic", 1, 57, -1, 35454997);
+			}
+		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MISSILES))
+			{
+			Static.getClient().invokeMenuAction("Deactivate", "Protect from Missiles", 1, 57, -1, 35454998);
+			}
+		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MELEE))
+			{
+			Static.getClient().invokeMenuAction("Deactivate", "Protect from Melee", 1, 57, -1, 35454999);
+			}
+		if (Prayers.isEnabled(Prayer.RIGOUR))
+			{
+			Static.getClient().invokeMenuAction("Deactivate", "Rigour", 1, 57, -1, 35455009);
+			}
+		if (Prayers.isEnabled(Prayer.AUGURY))
+			{
+			Static.getClient().invokeMenuAction("Deactivate", "Augury", 1, 57, -1, 35455012);
+			}
 	}
 	@Subscribe
 	private void onNpcDespawned(NpcDespawned event)
@@ -603,26 +636,6 @@ public class InfernoPlugin extends Plugin
 			message = message.substring(message.indexOf(": ") + 2);
 			currentWaveNumber = Integer.parseInt(message.substring(0, message.indexOf('<')));
 		}
-		if (event.getMessage().contains("completed!") && Prayers.isEnabled(Prayer.PROTECT_FROM_MAGIC))
-			{
-				Static.getClient().invokeMenuAction("Deactivate", "Protect from Magic", 1, 57, -1, 35454997);
-			}
-		if (event.getMessage().contains("completed!") && Prayers.isEnabled(Prayer.PROTECT_FROM_MISSILES))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Protect from Missiles", 1, 57, -1, 35454998);
-			}
-		if (event.getMessage().contains("completed!") && Prayers.isEnabled(Prayer.PROTECT_FROM_MELEE))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Protect from Melee", 1, 57, -1, 35454999);
-			}
-		if (event.getMessage().contains("completed!") && Prayers.isEnabled(Prayer.RIGOUR))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Rigour", 1, 57, -1, 35455009);
-			}
-		if (event.getMessage().contains("completed!") && Prayers.isEnabled(Prayer.MYSTIC_MIGHT))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Mystic Might", 1, 57, -1, 35455008);
-			}
 	}
 
 	private boolean isInInferno()
