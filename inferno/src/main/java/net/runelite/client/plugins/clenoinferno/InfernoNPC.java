@@ -24,20 +24,6 @@
  */
 package net.runelite.client.plugins.clenoinferno;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import net.runelite.api.Client;
-import net.runelite.api.NPC;
-import net.runelite.api.NpcID;
-import net.runelite.api.Prayer;
-import net.runelite.api.coords.WorldArea;
-import net.runelite.api.coords.WorldPoint;
 import static net.runelite.client.plugins.clenoinferno.InfernoPlugin.JALTOK_JAD_MAGE_ATTACK;
 import static net.runelite.client.plugins.clenoinferno.InfernoPlugin.JALTOK_JAD_RANGE_ATTACK;
 import static net.runelite.client.plugins.clenoinferno.InfernoPlugin.JAL_AK_MAGIC_ATTACK;
@@ -53,6 +39,20 @@ import static net.runelite.client.plugins.clenoinferno.InfernoPlugin.JAL_ZEK_MAG
 import static net.runelite.client.plugins.clenoinferno.InfernoPlugin.JAL_ZEK_MELEE_ATTACK;
 import static net.runelite.client.plugins.clenoinferno.InfernoPlugin.TZKAL_ZUK;
 import org.apache.commons.lang3.ArrayUtils;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import net.runelite.api.Client;
+import net.runelite.api.NPC;
+import net.runelite.api.NpcID;
+import net.runelite.api.Prayer;
+import net.runelite.api.coords.WorldArea;
+import net.runelite.api.coords.WorldPoint;
 
 class InfernoNPC
 {
@@ -384,6 +384,10 @@ class InfernoNPC
 		NIBBLER(new int[]{NpcID.JALNIB}, Attack.MELEE, 4, 99, 100),
 		BAT(new int[]{NpcID.JALMEJRAH}, Attack.RANGED, 3, 4, 7),
 		BLOB(new int[]{NpcID.JALAK}, Attack.UNKNOWN, 6, 15, 4),
+		MELEEBLOB(new int[]{NpcID.JALAKREKKET}, Attack.MELEE, 3, 15, 7),
+		RANGEBLOB(new int[]{NpcID.JALAKREKXIL}, Attack.RANGED, 3, 15, 5),
+		MAGEBLOB(new int[]{NpcID.JALAKREKMEJ}, Attack.MAGIC, 3, 15, 6),
+
 		MELEE(new int[]{NpcID.JALIMKOT}, Attack.MELEE, 4, 1, 3),
 		RANGER(new int[]{NpcID.JALXIL, NpcID.JALXIL_7702}, Attack.RANGED, 4, 98, 2),
 		MAGE(new int[]{NpcID.JALZEK, NpcID.JALZEK_7703}, Attack.MAGIC, 4, 98, 1),

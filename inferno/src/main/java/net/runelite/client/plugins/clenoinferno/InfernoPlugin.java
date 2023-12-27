@@ -28,23 +28,17 @@ import com.google.inject.Provides;
 import com.openosrs.client.game.NPCManager;
 import org.apache.commons.lang3.ArrayUtils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.inject.Inject;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
-import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.GameState;
-import net.runelite.api.InventoryID;
-import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
+import net.runelite.api.HeadIcon;
 import net.runelite.api.ItemID;
 import net.runelite.api.NPC;
 import net.runelite.api.NpcID;
@@ -68,9 +62,9 @@ import net.runelite.client.plugins.clenoinferno.displaymodes.InfernoWaveDisplayM
 import net.runelite.client.plugins.clenoinferno.displaymodes.InfernoZukShieldDisplayMode;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
-import net.unethicalite.api.utils.MessageUtils;
+import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.widgets.Prayers;
-import net.unethicalite.client.Static;
 import org.pf4j.Extension;
 
 @Extension
@@ -259,10 +253,11 @@ public class InfernoPlugin extends Plugin
 			}
 		}
 	}
-
+	public static int ticks = 0;
 	@Subscribe
 	private void onGameTick(GameTick event)
 	{
+		ticks++;
 		if (!isInInferno())
 		{
 			return;
@@ -294,17 +289,26 @@ public class InfernoPlugin extends Plugin
 
 		InfernoNPC.Attack closestAttack = getClosestAttack();
 
-
-
-		if (closestAttack != null && config.autoPrayer())
+		if (closestAttack != null)
 		{
-			activatePrayer(closestAttack);
+		enablePrayer(getPrayerForAttackType(closestAttack), ticks);
 		}
-		if (closestAttack == null)
-			{
-			if (config.autoPrayer())
-				deactivatePrayers();
-			}
+		else
+		{
+		// If no attack is imminent, you might want to flick to conserve prayer
+		// or deactivate prayers depending on your strategy
+		flick(ticks);
+		}
+
+//		if (closestAttack != null && config.autoPrayer())
+//		{
+//			activatePrayer(closestAttack);
+//		}
+//		if (closestAttack == null)
+//			{
+//			if (config.autoPrayer())
+//				deactivatePrayers();
+//			}
 
 		//if finalPhaseTick, we will skip incrementing because we already did it in onNpcSpawned
 		if (finalPhaseTick)
@@ -392,127 +396,141 @@ public class InfernoPlugin extends Plugin
 
 		infernoNpcs.add(0, new InfernoNPC(event.getNpc()));
 	}
-	private void activatePrayer(InfernoNPC.Attack attackType)
+	private Prayer getPrayerForAttackType(InfernoNPC.Attack attackType)
 	{
-		if (attackType == null)
-		{
-			deactivatePrayers();
-			return;
-		}
-
-			//MessageUtils.addMessage("Closest Attack: " + attackType);
-
-			switch (attackType)
-				{
-				case MAGIC:
-					if (!Prayers.isEnabled(Prayer.PROTECT_FROM_MAGIC))
-						{
-					//	MessageUtils.addMessage("Prayer Magic");
-						Static.getClient().invokeMenuAction("Activate", "Protect from Magic", 1, 57, -1, 35454997);
-						activateOffensivePrayer();
-						}
-					break;
-				case RANGED:
-					if (!Prayers.isEnabled(Prayer.PROTECT_FROM_MISSILES))
-						{
-					//	MessageUtils.addMessage("Prayer Range");
-						Static.getClient().invokeMenuAction("Activate", "Protect from Missiles", 1, 57, -1, 35454998);
-						activateOffensivePrayer();
-						}
-					break;
-				case MELEE:
-					if (!Prayers.isEnabled(Prayer.PROTECT_FROM_MELEE))
-						{
-					//	MessageUtils.addMessage("Prayer Melee");
-						Static.getClient().invokeMenuAction("Activate", "Protect from Melee", 1, 57, -1, 35454999);
-						activateOffensivePrayer();
-
-						break;
-						}
-					default:
-					MessageUtils.addMessage("No valid attack type detected");
-					// Handle unexpected attack types or no attack
-					break;
-				}
-
-			}
-	private void activateOffensivePrayer()
-	{
-		ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
-
-		if (equipment == null)
-		{
-			return;
-		}
-
-		Item[] items = equipment.getItems();
-		// Assuming slot ID for weapon is correct. Adjust as necessary.
-		Item weapon = items[EquipmentInventorySlot.WEAPON.getSlotIdx()];
-
-		if (weapon == null)
-		{
-			return;
-		}
-
-		// You need to determine the IDs for magic and ranged weapons
-		if (isMagicWeapon(weapon.getId()) && config.autoOffensivePrayer())
-		{
-				if (!Prayers.isEnabled(Prayer.AUGURY))
-				{
-					Static.getClient().invokeMenuAction("Activate", "Augury", 1, 57, -1, 35455012);
-				}
-			}
-			else if (isRangedWeapon(weapon.getId()) && config.autoOffensivePrayer())
+		switch (attackType)
 			{
-				if (!Prayers.isEnabled(Prayer.RIGOUR))
-					{
-						Static.getClient().invokeMenuAction("Activate", "Rigour", 1, 57, -1, 35455009);
-					}
-		}
-	}
-
-	private boolean isMagicWeapon(int itemId)
-	{
-		Set<Integer> magicWeaponIDs = new HashSet<>(Arrays.asList(
-				6914, 21006
-		));
-
-		return magicWeaponIDs.contains(itemId);
-	}
-
-	private boolean isRangedWeapon(int itemId)
-	{
-		// List of item IDs for ranged weapons
-		Set<Integer> rangedWeaponIDs = new HashSet<>(Arrays.asList(
-				20997, 12926
-		));
-
-		return rangedWeaponIDs.contains(itemId);
-	}
-	private void deactivatePrayers()
-	{
-
-		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MAGIC))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Protect from Magic", 1, 57, -1, 35454997);
-			}
-		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MISSILES))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Protect from Missiles", 1, 57, -1, 35454998);
-			}
-		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MELEE))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Protect from Melee", 1, 57, -1, 35454999);
-			}
-		if (Prayers.isEnabled(Prayer.RIGOUR))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Rigour", 1, 57, -1, 35455009);
-			}
-		if (Prayers.isEnabled(Prayer.AUGURY))
-			{
-			Static.getClient().invokeMenuAction("Deactivate", "Augury", 1, 57, -1, 35455012);
+			case MAGIC:
+				return Prayer.PROTECT_FROM_MAGIC;
+			case RANGED:
+				return Prayer.PROTECT_FROM_MISSILES;
+			case MELEE:
+				return Prayer.PROTECT_FROM_MELEE;
+			default:
+				return null;
 			}
 	}
+//	private void activatePrayer(InfernoNPC.Attack attackType)
+//	{
+//		if (attackType == null)
+//		{
+//			deactivatePrayers();
+//			return;
+//		}
+//
+//			//MessageUtils.addMessage("Closest Attack: " + attackType);
+//
+//			switch (attackType)
+//				{
+//				case MAGIC:
+//					if (!Prayers.isEnabled(Prayer.PROTECT_FROM_MAGIC))
+//						{
+//					//	MessageUtils.addMessage("Prayer Magic");
+//						Static.getClient().invokeMenuAction("Activate", "Protect from Magic", 1, 57, -1, 35454997);
+//						activateOffensivePrayer();
+//						}
+//					break;
+//				case RANGED:
+//					if (!Prayers.isEnabled(Prayer.PROTECT_FROM_MISSILES))
+//						{
+//					//	MessageUtils.addMessage("Prayer Range");
+//						Static.getClient().invokeMenuAction("Activate", "Protect from Missiles", 1, 57, -1, 35454998);
+//						activateOffensivePrayer();
+//						}
+//					break;
+//				case MELEE:
+//					if (!Prayers.isEnabled(Prayer.PROTECT_FROM_MELEE))
+//						{
+//					//	MessageUtils.addMessage("Prayer Melee");
+//						Static.getClient().invokeMenuAction("Activate", "Protect from Melee", 1, 57, -1, 35454999);
+//						activateOffensivePrayer();
+//
+//						break;
+//						}
+//					default:
+//					MessageUtils.addMessage("No valid attack type detected");
+//					// Handle unexpected attack types or no attack
+//					break;
+//				}
+//
+//			}
+//	private void activateOffensivePrayer()
+//	{
+//		ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
+//
+//		if (equipment == null)
+//		{
+//			return;
+//		}
+//
+//		Item[] items = equipment.getItems();
+//		// Assuming slot ID for weapon is correct. Adjust as necessary.
+//		Item weapon = items[EquipmentInventorySlot.WEAPON.getSlotIdx()];
+//
+//		if (weapon == null)
+//		{
+//			return;
+//		}
+//
+//		// You need to determine the IDs for magic and ranged weapons
+//		if (isMagicWeapon(weapon.getId()) && config.autoOffensivePrayer())
+//		{
+//				if (!Prayers.isEnabled(Prayer.AUGURY))
+//				{
+//					Static.getClient().invokeMenuAction("Activate", "Augury", 1, 57, -1, 35455012);
+//				}
+//			}
+//			else if (isRangedWeapon(weapon.getId()) && config.autoOffensivePrayer())
+//			{
+//				if (!Prayers.isEnabled(Prayer.RIGOUR))
+//					{
+//						Static.getClient().invokeMenuAction("Activate", "Rigour", 1, 57, -1, 35455009);
+//					}
+//		}
+//	}
+//
+//	private boolean isMagicWeapon(int itemId)
+//	{
+//		Set<Integer> magicWeaponIDs = new HashSet<>(Arrays.asList(
+//				6914, 21006
+//		));
+//
+//		return magicWeaponIDs.contains(itemId);
+//	}
+//
+//	private boolean isRangedWeapon(int itemId)
+//	{
+//		// List of item IDs for ranged weapons
+//		Set<Integer> rangedWeaponIDs = new HashSet<>(Arrays.asList(
+//				20997, 12926
+//		));
+//
+//		return rangedWeaponIDs.contains(itemId);
+//	}
+//	private void deactivatePrayers()
+//	{
+//
+//		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MAGIC))
+//			{
+//			Static.getClient().invokeMenuAction("Deactivate", "Protect from Magic", 1, 57, -1, 35454997);
+//			}
+//		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MISSILES))
+//			{
+//			Static.getClient().invokeMenuAction("Deactivate", "Protect from Missiles", 1, 57, -1, 35454998);
+//			}
+//		if (Prayers.isEnabled(Prayer.PROTECT_FROM_MELEE))
+//			{
+//			Static.getClient().invokeMenuAction("Deactivate", "Protect from Melee", 1, 57, -1, 35454999);
+//			}
+//		if (Prayers.isEnabled(Prayer.RIGOUR))
+//			{
+//			Static.getClient().invokeMenuAction("Deactivate", "Rigour", 1, 57, -1, 35455009);
+//			}
+//		if (Prayers.isEnabled(Prayer.AUGURY))
+//			{
+//			Static.getClient().invokeMenuAction("Deactivate", "Augury", 1, 57, -1, 35455012);
+//			}
+//	}
 	@Subscribe
 	private void onNpcDespawned(NpcDespawned event)
 	{
@@ -1214,6 +1232,9 @@ public class InfernoPlugin extends Plugin
 			case BAT:
 				return config.prayerBat();
 			case BLOB:
+			case MAGEBLOB:
+			case RANGEBLOB:
+			case MELEEBLOB:
 				return config.prayerBlob();
 			case MELEE:
 				return config.prayerMeleer();
@@ -1295,5 +1316,61 @@ public class InfernoPlugin extends Plugin
 			default:
 				return false;
 		}
+	}
+	private void enablePrayer(Prayer prayer, int originTick)
+	{
+		Prayer overhead = getOverhead();
+		if (overhead == null || overhead != prayer)
+		{
+		shortSleep();
+		Prayers.toggle(prayer);
+		}
+		else
+		flick(originTick);
+		}
+
+	public Prayer getOverhead()
+	{
+		HeadIcon ourIcon = Players.getLocal().getOverheadIcon();
+		if (ourIcon != null)
+		{
+		switch (ourIcon)
+			{
+		case MELEE:
+			return Prayer.PROTECT_FROM_MELEE;
+		case MAGIC:
+			return Prayer.PROTECT_FROM_MAGIC;
+		case RANGED:
+			return Prayer.PROTECT_FROM_MISSILES;
+		}
+		}
+		return null;
+	}
+	public void flick(int originTick)
+	{
+		Prayer overhead = getOverhead();
+		if (config.flick())
+		{
+		if (overhead != null)
+		{
+		log.info("flicking ENABLED");
+		shortSleep();
+		if (ticks > originTick) return;
+		Prayers.toggle(overhead);
+		Prayers.toggle(Prayer.RIGOUR);
+		shortSleep();
+		if (ticks > originTick) return;
+		Prayers.toggle(overhead);
+		Prayers.toggle(Prayer.RIGOUR);
+		}
+		}
+		else
+		{
+		log.info("flick DISABLED");
+		}
+	}
+	public static void shortSleep()
+	{
+		Time.sleep(50, 200);
 	}
 }

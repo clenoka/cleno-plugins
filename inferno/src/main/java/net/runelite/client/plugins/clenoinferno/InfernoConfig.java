@@ -217,12 +217,12 @@ public interface InfernoConfig extends Config
 
 	@ConfigItem(
 			position = 5,
-			keyName = "autoPrayer",
-			name = "Automatically activate prayers",
-			description = "Does it's best to activate and deactivate prayers",
+			keyName = "flick",
+			name = "Automatically flick prayers",
+			description = "Does it's best to flick prayers",
 			section = PrayerSection
 	)
-	default boolean autoPrayer()
+	default boolean flick()
 	{
 		return true;
 	}
