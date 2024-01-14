@@ -384,9 +384,9 @@ class InfernoNPC
 		NIBBLER(new int[]{NpcID.JALNIB}, Attack.MELEE, 4, 99, 100),
 		BAT(new int[]{NpcID.JALMEJRAH}, Attack.RANGED, 3, 4, 7),
 		BLOB(new int[]{NpcID.JALAK}, Attack.UNKNOWN, 6, 15, 4),
-		MELEEBLOB(new int[]{NpcID.JALAKREKKET}, Attack.MELEE, 3, 15, 7),
-		RANGEBLOB(new int[]{NpcID.JALAKREKXIL}, Attack.RANGED, 3, 15, 5),
-		MAGEBLOB(new int[]{NpcID.JALAKREKMEJ}, Attack.MAGIC, 3, 15, 6),
+		MELEEBLOB(new int[]{NpcID.JALAKREKKET}, Attack.MELEE, 3, 1, 10),
+		RANGEBLOB(new int[]{NpcID.JALAKREKXIL}, Attack.RANGED, 3, 15, 9),
+		MAGEBLOB(new int[]{NpcID.JALAKREKMEJ}, Attack.MAGIC, 3, 15, 8),
 
 		MELEE(new int[]{NpcID.JALIMKOT}, Attack.MELEE, 4, 1, 3),
 		RANGER(new int[]{NpcID.JALXIL, NpcID.JALXIL_7702}, Attack.RANGED, 4, 98, 2),
