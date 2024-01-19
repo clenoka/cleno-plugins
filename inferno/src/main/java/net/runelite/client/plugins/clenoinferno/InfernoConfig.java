@@ -168,7 +168,66 @@ public interface InfernoConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 1,
+			position = 1,
+			keyName = "drinkRestore",
+			name = "Drink Restore pots",
+			description = "The restore pots will be drank",
+			section = PrayerSection
+	)
+	default boolean drinkRestore()
+	{
+		return false;
+	}
+
+	@Range(
+			min = 1,
+			max = 98
+	)
+	@ConfigItem(
+			position = 2,
+			hidden = true,
+			unhide = "drinkRestore",
+			keyName = "restoreSetpoint",
+			name = "Prayer Setpoint",
+			description = "When prayer <= this value then sip a restore",
+			section = PrayerSection
+	)
+	default int prayerSetpoint()
+	{
+		return 15;
+	}
+	@ConfigItem(
+			position = 3,
+			keyName = "drinkSara",
+			name = "Drink Saradomin Brews",
+			description = "The sara brews will be drank",
+			section = PrayerSection
+	)
+	default boolean drinkSara()
+	{
+		return false;
+	}
+
+	@Range(
+			min = 1,
+			max = 98
+	)
+	@ConfigItem(
+			position = 4,
+			hidden = true,
+			unhide = "drinkSara",
+			keyName = "healSetpoint",
+			name = "HP Setpoint",
+			description = "When hitpoints <= this value then drink 3x sara brew",
+			section = PrayerSection
+	)
+	default int healSetpoint()
+	{
+		return 75;
+	}
+
+	@ConfigItem(
+		position = 5,
 		keyName = "indicateWhenPrayingCorrectly",
 		name = "Indicate When Praying Correctly",
 		description = "Indicate the correct prayer, even if you are already praying that prayer",
@@ -180,7 +239,7 @@ public interface InfernoConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 2,
+		position = 6,
 		keyName = "descendingBoxes",
 		name = "Descending Boxes",
 		description = "Draws timing boxes above the prayer icons, as if you were playing Piano Tiles",
@@ -192,7 +251,7 @@ public interface InfernoConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 3,
+		position = 7,
 		keyName = "indicateNonPriorityDescendingBoxes",
 		name = "Indicate Non-Priority Boxes",
 		description = "Render descending boxes for prayers that are not the priority prayer for that tick",
@@ -204,7 +263,7 @@ public interface InfernoConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 4,
+		position = 8,
 		keyName = "alwaysShowPrayerHelper",
 		name = "Always Show Prayer Helper",
 		description = "Render prayer helper at all time, even when other inventory tabs are open.",
@@ -216,7 +275,7 @@ public interface InfernoConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 5,
+			position = 9,
 			keyName = "flick",
 			name = "Automatically flick prayers",
 			description = "Does it's best to flick prayers",
@@ -227,7 +286,7 @@ public interface InfernoConfig extends Config
 		return true;
 	}
 	@ConfigItem(
-			position = 5,
+			position = 10,
 			keyName = "autoOffensivePrayer",
 			name = "Automatically activate offensive prayers",
 			description = "Does it's best to activate and deactivate offensive prayers",

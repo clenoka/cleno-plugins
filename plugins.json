@@ -1,12 +1,25 @@
 [{
   "projectUrl": "https://github.com/clenoka",
   "provider": "clenoka",
+  "name": "420xFight Cave",
+  "description": "Turns on Prayer for current and upcoming wave monsters in the Fight Caves and TzTok-Jad",
+  "id": "xfightcave-plugin",
+  "releases": [{
+    "date": "2024-01-16",
+    "sha512sum": "1393290AE2DC5D2A70F9FF79E10BBA5DAE9C0834FC6D3CCB05EBD5C7E7520034F7FFE50F8B06A62CC4C581C345CBEE1AAE726ED80552CCEADAFF9A993281C0A0",
+    "version": "1.0.0",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/a1x420xfight-cave-1.0.0.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
   "name": "Cleno Inferno",
   "description": "Inferno helper",
   "id": "clenoinferno-plugin",
   "releases": [{
     "date": "2023-12-26",
-    "sha512sum": "12C6322483AE3FA4F8C3491EFADA85989522B875A79A8CC1EA34F6ACA4DDD1C9919D887044F40753758E0F7392A6E5BDF068411D2871C51CAB4856823604212C",
+    "sha512sum": "272AEAE4F9B34F9E3EC21ADC74660E649360C523C15435AE72AF8E93BDF8F41E801C9B3BAEF0D2E235E53E8EA6CCD17C3CB050B98048EAAFE98AD79D0713C57B",
     "version": "6.0.0",
     "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/inferno-6.0.0.jar?raw=true",
     "requires": "^1.0.0"

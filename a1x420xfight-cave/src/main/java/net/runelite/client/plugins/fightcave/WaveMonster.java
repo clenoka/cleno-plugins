@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https:github.com/Owain94>
+ * Copyright (c) 2018, Jordan Atwood <jordan.atwood423@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,36 +22,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.fightcave;
 
-rootProject.name = "cleno-plugins"
+import lombok.AllArgsConstructor;
 
-//include("clenoguardian")
-//include("clenoitemnoter")
-//include("clenoskillunnoter")
-//include("clenoautoeater")
-//include("gemcutter")
-//include("winemaker")
-include("nex")
-//include("utils")
-//include("combathelper")
-//include("alchemicalhydra")
-//include("cerberus")
-//include("demonicgorillas")
-//include("gauntletextended")
-//include("grotesqueguardians")
-//include("zulrah")
-//include("clenofisher")
-include("inferno")
-//include("squire-gauntlet")
-include("a1x420xfight-cave")
+@AllArgsConstructor
+enum WaveMonster
+{
+	TZ_KIH("Drainer", 22),
+	TZ_KEK("Blob", 45),
+	TOK_XIL("Range", 90),
+	YT_MEJKOT("Melee", 180),
+	KET_ZEK("Mage", 360),
+	TZKOK_JAD("Jad", 702);
 
+	private final String name;
+	private final int level;
 
-for (project in rootProject.children) {
-    project.apply {
-        projectDir = file(name)
-        buildFileName = "$name.gradle.kts"
-
-        require(projectDir.isDirectory) { "Project '${project.path} must have a $projectDir directory" }
-        require(buildFile.isFile) { "Project '${project.path} must have a $buildFile build script" }
-    }
+	@Override
+	public String toString()
+	{
+		return String.format("%s - Level %s", name, level);
+	}
 }
