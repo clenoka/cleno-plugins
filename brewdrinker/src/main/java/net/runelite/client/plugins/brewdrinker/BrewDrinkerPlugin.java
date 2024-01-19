@@ -1,4 +1,4 @@
-package net.unethicalite.plugins.brewdrinker;
+package net.runelite.client.plugins.brewdrinker;
 
 /* Keep the change ya filthy animal
  * Chris
