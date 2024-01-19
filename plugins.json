@@ -14,6 +14,19 @@
 }, {
   "projectUrl": "https://github.com/clenoka",
   "provider": "clenoka",
+  "name": "Cleno Brew Drinker",
+  "description": "Drinks Brews & Restores",
+  "id": "clenobrewdrinker-plugin",
+  "releases": [{
+    "date": "2024-01-19",
+    "sha512sum": "96ED4738922F493B29F14CA1D5A6507DEDA46A08C62DCC0F1EC7260AD5FEA36BE749BDC3C8479EB1E7E4372180A089D1495C9A0C9081CA7AF4BF9C0229E4A9F6",
+    "version": "1.0.0",
+    "url": "https://github.com/clenoka/cleno-plugins/blob/master/release/brewdrinker-1.0.0.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}, {
+  "projectUrl": "https://github.com/clenoka",
+  "provider": "clenoka",
   "name": "Cleno Inferno",
   "description": "Inferno helper",
   "id": "clenoinferno-plugin",

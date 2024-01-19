@@ -1,5 +1,7 @@
+import ProjectVersions.unethicaliteVersion
+
 /*
- * Copyright (c) 2019 Owain van Brakel <https:github.com/Owain94>
+ * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,36 +25,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "cleno-plugins"
+version = "1.0.0"
 
-//include("clenoguardian")
-//include("clenoitemnoter")
-//include("clenoskillunnoter")
-//include("clenoautoeater")
-//include("gemcutter")
-//include("winemaker")
-include("nex")
-//include("utils")
-//include("combathelper")
-//include("alchemicalhydra")
-//include("cerberus")
-//include("demonicgorillas")
-//include("gauntletextended")
-//include("grotesqueguardians")
-//include("zulrah")
-//include("clenofisher")
-include("inferno")
-//include("squire-gauntlet")
-include("a1x420xfight-cave")
-include("brewdrinker")
+project.extra["PluginName"] = "Cleno Brew Drinker"
+project.extra["PluginDescription"] = "Drinks Brews & Restores"
 
+dependencies {
+    annotationProcessor(Libraries.lombok)
+    annotationProcessor(Libraries.pf4j)
 
-for (project in rootProject.children) {
-    project.apply {
-        projectDir = file(name)
-        buildFileName = "$name.gradle.kts"
+    compileOnly("net.unethicalite:runelite-api:${unethicaliteVersion}")
+    compileOnly("net.unethicalite:runelite-client:${unethicaliteVersion}")
 
-        require(projectDir.isDirectory) { "Project '${project.path} must have a $projectDir directory" }
-        require(buildFile.isFile) { "Project '${project.path} must have a $buildFile build script" }
+    compileOnly(Libraries.guice)
+    compileOnly(Libraries.lombok)
+    compileOnly(Libraries.pf4j)
+}
+
+tasks {
+    jar {
+        manifest {
+            attributes(
+                mapOf(
+                    "Plugin-Version" to project.version,
+                    "Plugin-Id" to nameToId(project.extra["PluginName"] as String),
+                    "Plugin-Provider" to project.extra["PluginProvider"],
+                    "Plugin-Description" to project.extra["PluginDescription"],
+                    "Plugin-License" to project.extra["PluginLicense"]
+                )
+            )
+        }
     }
 }
